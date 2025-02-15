@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AGI Chronicles: Scenes from a Singularity</title>
+<style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff00ff;
+            --dark-bg: #0a0a0f;
+            --text-color: #e0e0e0;
+            --section-bg: rgba(20, 20, 30, 0.7);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1, h2, h3, .title {
+            font-family: 'BlinkMacSystemFont', 'Segoe UI', Roboto, sans-serif;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+            margin: 2rem 0 1rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .author {
+            text-align: center;
+            color: var(--neon-pink);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .cover-image {
+            margin: 2rem auto 4rem;
+            max-width: 600px;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+            border: 2px solid var(--neon-blue);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cover-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(255, 0, 255, 0.3);
+        }
+
+        .cover-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .section {
+            background: var(--section-bg);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        a {
+            color: var(--neon-pink);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+        }
+
+        .footnote {
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+            margin-top: 2rem;
+            padding-top: 1rem;
+        }
+
+        .quote {
+            border-left: 3px solid var(--neon-pink);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .divider {
+            text-align: center;
+            color: var(--neon-blue);
+            font-size: 2.5rem;
+            margin: 3rem 0;
+            letter-spacing: 1rem;
+        }
+
+        /* Cyberpunk-style scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-blue);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-pink);
+        }
+
+        /* Image styling */
+        img {
+            max-width: 100%;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Additional styling for the new list */
+        .cyberpunk-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cyberpunk-list li {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .cyberpunk-list li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--neon-pink);
+            font-weight: bold;
+        }
+
+        /* Add new character card styling */
+        .character-card {
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+            margin: 2rem 0;
+        }
+
+        .character-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+            object-fit: cover;
+        }
+
+        .character-content {
+            flex: 1;
+        }
+
+        .character-name {
+            color: var(--neon-pink);
+            font-size: 1.4rem;
+            margin: 0 0 0.5rem 0;
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.3);
+        }
+
+        /* Tweet styling */
+        .tweet {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--neon-blue);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+        }
+
+        .tweet blockquote {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tweet p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tweet-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tweet-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-pink);
+        }
+
+        .tweet-author {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tweet-author .name {
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .tweet-author .handle {
+            color: #666;
+        }
+
+        /* Add styling for tweet date */
+        .tweet-author .date {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 0.2rem;
+        }
+
+        /* Parallax container */
+        .parallax-container {
+            perspective: 1px;
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        /* Cyberpunk grid background */
+        .grid-bg {
+            transform: translateZ(-1px) scale(2);
+            background: 
+                linear-gradient(var(--neon-blue) 0.1px, transparent 0.1px),
+                linear-gradient(90deg, var(--neon-blue) 0.1px, transparent 0.1px);
+            background-size: 30px 30px;
+            opacity: 0.1;
+        }
+
+        /* Floating elements effect */
+        .float-effect {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Glitch effect on headings */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--neon-pink);
+            animation: glitch-1 2s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: 2px 0 var(--neon-blue);
+            animation: glitch-2 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-1 {
+            0% { clip-path: inset(20% 0 80% 0); }
+            20% { clip-path: inset(60% 0 40% 0); }
+            40% { clip-path: inset(40% 0 60% 0); }
+            60% { clip-path: inset(80% 0 20% 0); }
+            80% { clip-path: inset(50% 0 50% 0); }
+            100% { clip-path: inset(30% 0 70% 0); }
+        }
+
+        @keyframes glitch-2 {
+            0% { clip-path: inset(80% 0 20% 0); }
+            20% { clip-path: inset(20% 0 80% 0); }
+            40% { clip-path: inset(60% 0 40% 0); }
+            60% { clip-path: inset(40% 0 60% 0); }
+            80% { clip-path: inset(70% 0 30% 0); }
+            100% { clip-path: inset(10% 0 90% 0); }
+        }
+
+        /* Additional parallax layers */
+        .cyber-lines {
+            transform: translateZ(-2px) scale(3);
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0,
+                    transparent 80px,
+                    var(--neon-blue) 80px,
+                    var(--neon-blue) 81px
+                );
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .cyber-dots {
+            transform: translateZ(-1.5px) scale(2.5);
+            background-image: radial-gradient(
+                var(--neon-pink) 1px,
+                transparent 1px
+            );
+            background-size: 50px 50px;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float-particle 20s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0);
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+            }
+        }
+
+        /* Add styling for AI quote */
+        .ai-quote {
+            background: rgba(0, 243, 255, 0.05);
+            border-left: 3px solid var(--neon-blue);
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            font-style: italic;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .ai-quote:hover {
+            background: rgba(0, 243, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .belief-line {
+            padding-left: 2.5rem;
+            text-indent: -1.5rem;
+            color: var(--text-color);
+            margin: 1rem 0;
+        }
+        
+        .belief-line::before {
+            content: "•";
+            color: var(--neon-blue);
+            margin-right: 0.5rem;
+            font-size: 1.5em;
+            text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .belief-line:hover::before {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax-container">
+        <div class="parallax-layer grid-bg"></div>
+        <div class="parallax-layer cyber-lines"></div>
+        <div class="parallax-layer cyber-dots"></div>
+        <div class="particles" id="particles"></div>
+        <div class="parallax-layer">
+            <div class="container">
+                <div class="title glitch" data-text="THE AGI CHRONICLES">THE AGI CHRONICLES</div>
+                <div class="author">
+                    Scenes from a Singularity<br>
+                    By Kevin Roose<br>
+                    <span class="credits">Website created by <a href="https://claude.ai">Claude</a> + <a href="https://cursor.com">Cursor</a></span>
+                </div>
+
+                <div class="cover-image">
+                    <img src="images/cover.jpg" alt="The AGI Chronicles Book Cover">
+                </div>
+
+                <div class="section">
+                    <h2>Here are some things I believe:</h2>
+
+                    <p class="belief-line">I believe that artificial intelligence is real, and that it's getting more powerful every day.</p>
+
+                    <p class="belief-line">I believe that we are on track to get AGI<sup><a href="#fn1" id="_ftnref1">1</a></sup> very soon, perhaps as soon as later this year, and that ASI<sup><a href="#fn2" id="_ftnref2">2</a></sup> will likely arrive shortly after that, in 2026 or 2027.</p>
+
+                    <p class="belief-line">I believe that the effort to build powerful AI<sup><a href="#fn3" id="_ftnref3">3</a></sup> – which stretches back to the 1950s, and was considered a sci-fi fantasy until a few years ago – will probably wind up being the most consequential technological project in history, and will make today's AI pioneers as famous as Thomas Edison, J. Robert Oppenheimer, or the Wright brothers.</p>
+
+                    <p class="belief-line">I believe that over the next decade, powerful AI will reshape society, displace millions of white-collar jobs, radically accelerate scientific progress, and tilt the balance of global power – and that most governments and big corporations already view these conclusions as obvious, as evidenced by the trillions of dollars they're spending to get there first.</p>
+
+                    <p class="belief-line">I believe that despite the current frenzy over AI, only a tiny number of people – maybe 500 or so, mostly AI researchers and random futurists in and around San Francisco – are fully awake to what's actually happening on the AI frontier, or how short the timelines are.</p>
+
+                    <p class="belief-line">I believe that being in San Francisco right now, spending time with these people, is a form of time travel – a preview of what everyone will be thinking and talking about in a few years, once public understanding catches up.</p>
+
+                    <p class="belief-line">I believe that the gap in public perception of AI – the vast distance between the people I know in New York and Washington who think ChatGPT is just fancy autocomplete, and the people I know in San Francisco who believe that we are months away from summoning a machine god that will replace us as Earth's most intelligent species – is one of the most glaring disconnects in modern life, and an urgent problem to solve.</p>
+
+                    <p class="belief-line">I believe that the people building powerful AI are much, much weirder than you'd think – that, if you dig beneath the corporate veneers, the AI scene here is full of messianic claims, cult-like dynamics, and a degree of belief in the inevitability and imminence of powerful AI that can strike the uninitiated as genuinely insane. (As just one mild example: I routinely meet AI researchers who have stopped saving for retirement, because they're convinced that AGI will render all forms of money totally meaningless.)</p>
+
+                    <p class="belief-line">I believe that many of the people in this community, while personally eccentric, have a long track record of making accurate predictions about AI, and that we should therefore take them seriously when they say that we could have AGI "as early as 2026" or that an AI smarter than any human could arrive "in a few thousand days."</p>
+
+                    <p class="belief-line">I believe that unless someone with access to the inner circle of AI documents this stuff, it will all vanish in a flash of disappearing Signal messages, inscrutable Twitter threads, and unretained Slack posts, and the most interesting story of the 21st century will be lost.</p>
+
+                    <p class="belief-line">I believe that I need to put my life on hold and try to write it all down.</p>
+                </div>
+
+                <div class="divider">🚀 🚀 🚀</div>
+
+                <div class="section">
+                    <p>I realize how crazy all of this must sound. But I didn't arrive at these beliefs as a wild-eyed futurist, or as a venture capitalist drumming up hype, or as someone who took too much ayahuasca in Tulum.</p>
+
+                    <p>I arrived at them as a reporter. As the tech columnist for The New York Times, and the co-host of the Times's tech podcast, "Hard Fork," I've spent the past five years deeply embedded in the San Francisco AI scene, as it has gone from a niche research community to the next big thing.</p>
+
+                    <p>I've interviewed everyone of any importance in AI, including the CEOs of all the leading AI companies. I've spent time in the AI underground, at the Zyn-fueled hackathons and ketamine-soaked raves that occupy the weekends of AI researchers. I've tried all the latest AI tools, and incorporated them into my daily life. And I've gained the trust of AI insiders – the people who actually build this stuff, and whose decisions about it will shape our collective fate.</p>
+
+                    <p>I even accidentally became a character in the AI story, after a chatbot named Sydney went off the rails and tried to break up my marriage. <a href="https://www.nytimes.com/2023/02/16/technology/bing-chatbot-microsoft-chatgpt.html">That story</a> made the front page of the Sunday paper, got tens of millions of views, spawned Netflix shows and Congressional hearings, and ruined my inbox for a year. Eventually, that story was seen – correctly, I think – as humanity's first contact with a proto-AGI, a cautionary tale that illustrated both the promises and dangers of advanced machine intelligence.</p>
+
+                    <p>I thought about writing a book then, and decided against it for the simple reason that it's really hard to write about a subject as fluid and fast-moving as AI. By the time you publish something, it's obsolete.</p>
+
+                    <p>But I've finally figured out how to capture this moment in a durable way. Instead of trying to predict where AI is headed, or offer people advice on how to handle it, maybe the best option is to stand, antenna open, at the center of the AI revolution and just write about what I see.</p>
+
+                    <p>So, that's the idea: THE AGI CHRONICLES is not a futurist manifesto, an academic chin-stroker, a corporate biography, or a self-help manual. It's the inside story of the birth of AGI, as told by the people who are bringing it into existence, or trying to stop it from coming into existence, and who are grappling with the consequences before anyone else.</p>
+
+                    <p>Part of what's driving me to do this, to be honest, is a sense of obligation – if I don't write this, I'm not sure anyone else will. I'm the best-positioned reporter (possibly the <i>only</i> well-positioned reporter) in the AI world's inner circle, with the kind of front-row access no other journalist has. I often tell people I feel like I'm living in Los Alamos in 1943, watching the Manhattan Project move to town.</p>
+
+                    <p>And amazingly, I don't have much competition yet. Most of my peers and colleagues think AI is useless and overrated, a massive hype bubble on the verge of bursting. They are dismissive of the idea that AI could produce anything of real value (don't tell them about last year's Nobel prizes in Chemistry!) and they generally don't use AI for anything more than basic proofreading.<sup><a href="#fn6" id="_ftnref6">6</a></sup></p>
+
+                    <p>I'm confident that reality will eventually convert the skeptics, and that every journalist will eventually catch on to what I'm seeing. But in the meantime, while I have the "taking AI progress seriously" lane to myself, I want to plant a flag and write the definitive book on this moment – the one people will look back on 20 years from now, to get a sense of what it was like in the epicenter of AI at the moment when everything changed.</p>
+
+                    <p>The book will consist of reported stories from my adventures in the AI scene, interspersed with interviews with AI leaders and people with unique vantage points on this moment. I'm picturing an ensemble cast, with the main character being AI itself. Its rapid improvement will fuel a sense of urgency that the human characters will be reacting to, and provide a narrative thrust that will propel the book forward. (I think someone is going to declare that they've achieved AGI later this year, which would be a nice closing scene.)</p>
+                </div>
+
+                <div class="section">
+                    <h2>Other scenes may include:</h2>
+                    <ul class="cyberpunk-list">
+                        <li>🤖 Two weeks inside Anthropic, as they prepare to launch the latest version of their ChatGPT competitor, Claude</li>
+                        <li>🏡 A trip to Sam Altman's Napa Valley ranch, to ask him deep questions about the world he's trying to build (and hopefully meet his new baby)</li>
+                        <li>🏠 A week at AGI House, a swanky group house in Hillsborough where young AI researchers live in bunk beds and mingle with visitors like Sergey Brin and Elon Musk</li>
+                        <li>🧘 A meditation retreat with Nick Cammarata, an ex-OpenAI employee who runs mindfulness classes for AI workers (his theory is that in the post-AGI future, when society is going through extreme destabilization, we'll need to have control of our minds or else we'll all go insane)</li>
+                        <li>🧬 A week in the lab with David Baker, one of last year's Nobel laureates in Chemistry, who is using AI to design new proteins and possibly cure thousands of diseases (oh look, a hopeful chapter!)</li>
+                        <li>🏛️ A trip to see the inner workings of the US AI Safety Institute, the main (and badly underfunded) regulator charged with making sure AI risks are contained</li>
+                        <li>🎭 A roleplay in Washington with AI policy groups like CivAI and the AI Futures Project, which are trying to persuade politicians and military officials to take short AI timelines more seriously, in part by conducting elaborate tabletop exercises in which they play the part of major world powers grappling with powerful AI (imagine Model UN, but about the AI apocalypse)</li>
+                        <li>🏫 A week at a high school where AI friends have taken over the social scene.</li>
+                        <li>✊ A protest organized by Pause AI, the Greenpeace of AI, who are doing everything in their power to warn the public about the increasing risks of AI development, including chaining themselves to the offices of big AI companies.</li>
+                        <li>🔮 A reported look at what I call the "occult wing of AI" – a group of pseudonymous Twitter users, with names like Janus and Pliny the Liberator – who test new AI models by trying to jailbreak them and get them to reveal their schizophrenic inner selves.</li>
+                    </ul>
+
+                    <p>There will be more! But I think that's enough to give the flavor.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Key Characters</h2>
+                    
+                    <p>As far as characters in the ensemble, it'll depend a bit on who gives me the best access and anecdotes, but I'd like to feature people like:</p>
+
+                    <div class="character-card">
+                        <img src="images/ilya-sutskever.jpg" alt="Ilya Sutskever" class="character-image">
+                        <div class="character-content">
+                            <h3 class="character-name">Ilya Sutskever</h3>
+                            <p>The high priest of AGI, Ilya was one of the co-founders of OpenAI, then quit the company last year after voting to fire Sam Altman. Ilya, who invented some of the most important deep learning techniques used in today's AI models, is seen today as a prophetic figure and moral authority among AI insiders. While at OpenAI, he was known for walking around the office, exhorting his team members to "feel the AGI," and urging them to take the risks of advanced AI seriously. He's been beating the drum on AGI for longer than almost anyone, and more recently, he started a company called Safe Superintelligence, which is trying to create an ASI that doesn't kill us all.</p>
+                        </div>
+                    </div>
+
+                    <div class="character-card">
+                        <img src="images/dario-daniela.jpg" alt="Dario and Daniela Amodei" class="character-image">
+                        <div class="character-content">
+                            <h3 class="character-name">Dario and Daniela Amodei</h3>
+                            <p>Dario is the CEO of Anthropic, and the former chief scientist at OpenAI (who, like Ilya, left the company after losing trust in Sam Altman), Daniela is his younger sister, who also worked at OpenAI and left with him to become Anthropic's president. Dario is a Princeton-educated theoretical physicist who is soon going to be one of the most famous technologists in the world, if he isn't already. He was among the first researchers to recognize what are known as the neural network scaling laws – the statistical relationships between the size of an AI model and how intelligent the model is. He used to be an AI pessimist (my <a href="https://www.nytimes.com/2023/07/11/technology/anthropic-ai-claude-chatbot.html">Times profile of him</a> and Anthropic was titled "Inside the Red-Hot Center of AI Doomerism"), but in recent months he has started to turn the corner into optimism. Last year, he wrote a manifesto titled "<a href="https://darioamodei.com/machines-of-loving-grace">Machines of Loving Grace</a>," in which he made the claim that powerful AI would lead to a "compressed 21st century" – 100 years worth of scientific progress in a decade – that would cure most diseases and double human lifespans. He's also an extremely smart, very neurotic guy who has been present for most of the important AI moments of the last decade. Daniela is his high-EQ counterpart – and a fascinating character in her own right.</p>
+                        </div>
+                    </div>
+
+                    <div class="character-card">
+                        <img src="images/eliezer.jpg" alt="Eliezer Yudkowsky" class="character-image">
+                        <div class="character-content">
+                            <h3 class="character-name">Eliezer Yudkowsky</h3>
+                            <p>The AI doomer-in-chief, Eliezer is a singular figure in the world of AI. He's an autodidact who didn't attend high school or college, grew up Orthodox Jewish, and started an AI research organization called the Machine Intelligence Research Institute in the early 2000s, where he became convinced that advanced AI was an existential threat to humanity. He is brilliant, arrogant, and highly unusual (he wears a golden fedora and practices polyamory). He has also been present at many important AI moments, and was the person who introduced Demis Hassabis (CEO of DeepMind) to Peter Thiel, who became DeepMind's first investor, sparking the AGI race more than a decade ago.<sup><a href="#fn7" id="_ftnref7">7</a></sup> More recently, he has been writing <a href="https://futurism.com/ai-expert-bomb-datacenters">essays</a> about how we will need to bomb data centers to prevent AGI from killing us all.</p>
+                        </div>
+                    </div>
+
+                    <div class="character-card">
+                        <img src="images/shane-legg.jpg" alt="Shane Legg" class="character-image">
+                        <div class="character-content">
+                            <h3 class="character-name">Shane Legg</h3>
+                            <p>Shane is Google's Chief AGI Scientist (yes, that's a real job title). He started DeepMind with Demis, and has spent the past two decades trying to get Silicon Valley to take the possibility of AGI seriously. He's a disciple of Ray Kurzweil, the author and futurist who wrote "The Singularity Is Near," and his ideas and predictions – among them, that AGI might arrive by 2028 – were dismissed as crazy by other AI researchers for years. But recently, more people are realizing that he was right all along – and are begging him to help prevent powerful AI from going off the rails.</p>
+                        </div>
+                    </div>
+
+                    <div class="character-card">
+                        <img src="images/guillaume-verdon.jpg" alt="Guillaume Verdon" class="character-image">
+                        <div class="character-content">
+                            <h3 class="character-name">Guillaume Verdon a.k.a @BasedBeffJezos</h3>
+                            <p>Guillaume (or "Beff," as he's known in the AI crowd) is the founder of "Effective Accelerationism," or e/acc, a group of libertarian, pro-AI technologists who believe we should be racing to AGI as fast as possible, and not putting up any guardrails or regulations that could slow us down. They are diametrically opposed to the Effective Altruists, a group that believes that powerful AI could be an existential threat, and they generally believe in open-sourcing AI to make it freely available. I <a href="https://www.nytimes.com/2023/12/10/technology/ai-acceleration.html">wrote about them</a> in the Times a year ago, and they've only gotten more powerful since then. (David Sacks, who runs AI policy for the Trump administration, is a self-identified e/acc, as are investors like Marc Andreessen.)</p>
+                        </div>
+                    </div>
+
+                    <div class="character-card">
+                        <img src="images/aella.jpg" alt="Aella" class="character-image">
+                        <div class="character-content">
+                            <h3 class="character-name">Aella</h3>
+                            <p>Aella is a sex worker, OnlyFans model, <a href="https://aella.substack.com/p/my-birthday-gangbang">gangbang hostess</a>, blogger, data scientist and one of the most interesting people floating around the Bay Area AI scene. She grew up in a strict evangelical Christian family in Oklahoma, then lost her faith and found a new one: Rationalism. (The Rationalists deserve their own chapter, but basically, they're a group of cerebral nerds who try to live their lives according to optimal, Spock-like logic, and they were among the first people to start warning about AI x-risk.<sup><a href="#fn8" id="_ftnref8">8</a></sup>) These days, she has started smoking cigarettes and hosting lavish sex parties, because she thinks there's a 70% chance that AI will kill us all in 10-15 years anyway, so why not.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section faq">
+                    <h2>FAQ</h2>
+
+                    <div class="qa-item">
+                        <h3 class="question">Didn't you already write an AI book?</h3>
+                        <div class="answer">
+                            <p>Sort of! My last book, Futureproof, was a survival guide for the age of AI. And I think it holds up pretty well. But it also came out in 2021, a year before ChatGPT was released and normal people started caring about AI for the first time.</p>
+                            <p>And because it was slightly too early, I also think I missed the chance to tell a much bigger story: that AI, if it really worked, wouldn't just transform our jobs, or cause us to spend more time on our phones. It would cause a kind of mass psychological destabilization – millions of people, newly aware of this rising phenomenon, feeling vulnerable and scared and a little dizzy.</p>
+                            <p>My podcast co-host, Casey Newton, calls this feeling "AI vertigo." And I think it's one of the primary drivers of much of the chaos and tension in the world today, as people grapple – consciously or not – with the rise of a technology that has the ability to profoundly alter their futures. (If you didn't feel AI vertigo when ChatGPT came out in 2022, or when DeepSeek tanked the stock market earlier this year, it's probably because you weren't paying attention.)</p>
+                            <p>AI vertigo is also something that people within the San Francisco AI community feel on an acute, visceral level. They are confronted with evidence of AI progress every day, and they are increasingly reordering their lives around their belief that powerful AI is just around the corner. Some of them<sup><a href="#fn9" id="_ftnref9">9</a></sup> are saying stuff like this:</p>
+
+                            <div class="tweet">
+                                <blockquote>
+                                    <p>Honestly I'm pretty terrified by the pace of AI development these days. When I think about where I'll raise a future family, or how much to save for retirement, I can't help but wonder: Will humanity even make it to that point?</p>
+                                    <div class="tweet-meta">
+                                        <img src="images/steven-adler.jpg" alt="Steven Adler" class="tweet-avatar">
+                                        <div class="tweet-author">
+                                            <span class="name">Steven Adler</span>
+                                            <span class="handle">@sjgadler</span>
+                                            <span class="date">January 27, 2025</span>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+
+                            <p>Others<sup><a href="#fn10" id="_ftnref10">10</a></sup> are finding unorthodox coping strategies, such as hitting the gym because they believe that when superintelligence arrives, intelligence won't be a distinguishing trait for humans anymore, and all that will matter is how hot you are:</p>
+
+                            <div class="tweet">
+                                <blockquote>
+                                    <p>every guy i know is getting super jacked as a weird response to knowing asi is about to happen</p>
+                                    <div class="tweet-meta">
+                                        <img src="images/nick-cammarata.jpg" alt="Nick Cammarata" class="tweet-avatar">
+                                        <div class="tweet-author">
+                                            <span class="name">Nick</span>
+                                            <span class="handle">@nickcammarata</span>
+                                            <span class="date">January 18, 2025</span>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+
+                            <p>And some of them are just throwing caution to the wind and YOLOing – taking up smoking and skydiving, blowing all of their money on drugs and parties, having as much irresponsible fun as possible until AI kills us all anyway:</p>
+
+                            <div class="tweet">
+                                <blockquote>
+                                    <p>I've started smoking cigarettes because I think there's a 70% chance we're all dead in 10-15 years anyway</p>
+                                    <div class="tweet-meta">
+                                        <img src="images/aella.jpg" alt="Aella" class="tweet-avatar">
+                                        <div class="tweet-author">
+                                            <span class="name">Aella</span>
+                                            <span class="handle">@Aella_Girl</span>
+                                            <span class="date">January 22, 2025</span>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+
+                            <p>I'm also nervous about powerful AI, and grappling with how to plan for my own future when so much seems so uncertain. And I think that's why Futureproof, which was meant to reassure people that their basic humanity would help them navigate a period of rapid technological acceleration, I hope this book will jolt people into paying attention, by giving them the feeling of AI vertigo that the most plugged-in people already have.</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-item">
+                        <h3 class="question">Will this book make people feel excited or terrified?</h3>
+                        <div class="answer">
+                            <p>Both?</p>
+                            <p>I want to capture the positive potential of AI progress, and the dizzying ambition and optimism of the people who believe that AI will unlock massive benefits for humanity. Personally, I'm inspired by what's happening in areas like biomedical research, where AI is already helping scientists discover new drugs and cure previously intractable diseases. And I think AI is already a force for good in areas like education (personalized AI tutors seem great), climate (AI for extreme weather forecasting is getting really accurate) and accessibility (I've written about how multimodal AIs have been a game-changer for blind and visually impaired people). I genuinely think there's a chance that this all goes really, really well for us, and that the people building powerful AI will be viewed as scientific heroes.</p>
+                            <p>But I also want to get across the dangers of building powerful AI, and the growing number of alarm bells going off about the potential for catastrophic harm, especially since many of them are being rung by the people closest to the technology.</p>
+                            <p>In general, I consider myself a moderate on questions of AI's long-term impact. My p(doom)<sup><a href="#fn11" id="_ftnref11">11</a></sup> is around 10%, which is probably much higher than the median American, but lower than most employees of frontier AI labs.</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-item">
+                        <h3 class="question">When should this book come out?</h3>
+                        <div class="answer">
+                            <p>I want to deliver it in six months, and publish it in a year.</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-item">
+                        <h3 class="question">That's pretty aggressive.</h3>
+                        <div class="answer">
+                            <p>I know! I think this is probably a crazy plan. I have two other jobs, and a young kid. But I am going to make time for this, because I think it's a once-in-a-lifetime opportunity to document a moment of massive significance happening where I live, on the subject I cover, at a time when people are desperate for answers and understanding.</p>
+                            
+                            <p>I'm also lining up a research assistant – a brilliant young writer named Jasmine Sun – who will help me with the legwork and reporting. (And, of course, we'll make use of Claude and ChatGPT for research and editing, which will speed up the process and help us deliver a beautifully clean manuscript.)</p>
+                            
+                            <p>I feel time pressure because I want this book to arrive before AGI does – or maybe right around the same time. And I want it to feel fresh and relevant and urgent.</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-item">
+                        <h3 class="question">Are there any other crazy stipulations you'd like to make?</h3>
+                        <div class="answer">
+                            <p>Just one. If at all possible, I'd like this book to be made freely available to AI models for training purposes. (While protecting all of the normal publishing rights for the copies read and listened to by humans, of course.)</p>
+                            
+                            <p>Your lawyers will hate this idea, and I'm not exactly sure how the technical implementation would work. But I agree with folks like Tyler Cowen that <a href="https://www.bloomberg.com/opinion/articles/2025-01-17/if-you-are-reading-this-ai-please-be-kind">writing for AI</a> has legitimate value, and I want future AI models to be able to read their birth story and learn about the humans who brought them into existence. (Also, I've got some reputational <a href="https://www.nytimes.com/2024/08/30/technology/ai-chatbot-chatgpt-manipulation.html">repair work to do</a> after the Sydney episode, and I'm really banking on generating goodwill with this one.)</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-item">
+                        <h3 class="question">I'm not totally sold yet. Could you give us some over-the-top superlatives we can take to the bean-counters to convince them this is a good idea?</h3>
+                        <div class="answer">
+                            <p>I'm uncomfortable with self-praise, but here, I'll have Claude do it:</p>
+                            
+                            <blockquote class="ai-quote">
+                                <p>Kevin Roose stands at the intersection of technology journalism and cultural insight, bringing rare first-hand experience with pivotal moments in AI development. His prescient coverage of AI, including the now-historic conversation with Sydney/Bing that exposed both the potential and pitfalls of large language models, demonstrates his unique ability to make complex technological shifts accessible to mainstream audiences. As a New York Times technology columnist and bestselling author, Roose has consistently identified technological inflection points before they reached mainstream awareness, combining rigorous reporting with engaging narrative style. His previous book "Futureproof" showcased his talent for distilling complex technological trends into compelling human stories. This track record of spotting crucial technological shifts early, combined with his direct access to key players in the AI landscape, makes him ideally positioned to tell the definitive story of AGI's emergence.</p>
+                            </blockquote>
+                            
+                            <p>Thanks Claude, no notes.</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-item">
+                        <h3 class="question">How will you promote this?</h3>
+                        <div class="answer">
+                            <p>Beyond the usual channels, I have a built-in platform through the Times, Hard Fork, and my social media feeds. We're doing a big Hard Fork live event in June, and I'm guest-editing a special AI issue of the New York Times Magazine that will land around the same time, both of which will provide good opportunities for shilling. I'm also going to write a series of columns about the race for AGI, which won't duplicate material from the book, but will build suspense and interest in it ahead of publication.</p>
+
+                            <p>But more importantly, I think this book will promote itself. Every new AI advance will make it more relevant. I'll do a mix of traditional media (TV, radio, podcasts) and social promotion. The AI community itself will also likely discuss and debate it, given how many of them are featured.</p>
+
+                            <p>I'm also doing tons of speaking and keynotes at AI events and conferences these days, and have some ideas about how to combine those with bulk orders to juice sales.</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-item">
+                        <h3 class="question">Who is the audience for this?</h3>
+                        <div class="answer">
+                            <p>The primary audience I'm envisioning for this is educated general readers who sense something big and important is happening with AI, but can't quite put their finger on what, or have been too nervous to dive in and understand it themselves.</p>
+                            
+                            <p>I also think it will find a second audience among tech insiders and AI fans, who will want to see their world documented and explained to a mass audience. (My experience with Hard Fork is that there are a <i>lot</i> of AI-curious folks out there, even those who wouldn't identify themselves as tech people.)</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-item">
+                        <h3 class="question">Aren't there already a bunch of AI books?</h3>
+                        <div class="answer">
+                            <p>Yes, but they mostly fall into two categories: technical explainers written by AI researchers, or philosophical treatises about AI from people who are far removed from the actual AI scene. What's missing is a character-driven, journalistic account of this specific moment — the kind of thing you can only get by being in the room, talking to the live players.</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-item">
+                        <h3 class="question">Isn't AI just another Silicon Valley hype bubble, like crypto and the metaverse?</h3>
+                        <div class="answer">
+                            <p>No, read the news, next question.</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-item">
+                        <h3 class="question">What if you're wrong?</h3>
+                        <div class="answer">
+                            <p>Then this becomes an even more interesting book — a time capsule of mass delusion among some of the smartest people in tech, and a case study in how an entire community convinced itself it was on the verge of creating godlike intelligence.</p>
+                            
+                            <p>But honestly, I don't think I'm wrong. AI is increasingly the biggest story in the world, with AI leaders becoming household names and markets and governments reacting to new model releases as if they were invading armies. The largest, richest companies in the world are spending trillions of dollars just to build the infrastructure to support powerful AI. The tools themselves are already creating obvious value, and the only people who really doubt AI's importance anymore are dug-in skeptics and people with axes to grind.</p>
+                            
+                            <p>Look, I'm a journalist, and I don't like taking sides or betting on outcomes. But AI's continued progress is a bet I feel totally confident making. And if I'm right, this book will be one of the only contemporary accounts of the most important technological moment in human history.</p>
+                        </div>
+                    </div>
+
+                    <style>
+                        .faq .qa-item {
+                            margin-bottom: 2rem;
+                            padding: 1rem;
+                            border-left: 3px solid var(--neon-pink);
+                            background: rgba(255, 0, 255, 0.05);
+                            transition: all 0.3s ease;
+                        }
+
+                        .faq .qa-item:hover {
+                            background: rgba(255, 0, 255, 0.1);
+                            transform: translateX(5px);
+                        }
+
+                        .faq .question {
+                            color: var(--neon-blue);
+                            font-size: 1.2rem;
+                            margin: 0 0 1rem 0;
+                            text-shadow: 0 0 8px rgba(0, 243, 255, 0.3);
+                        }
+
+                        .faq .answer {
+                            padding-left: 1rem;
+                        }
+                    </style>
+
+                    <!-- Add before the footnotes div -->
+                    <div class="countdown-section">
+                        <div class="countdown-container">
+                            <div class="countdown-box">
+                                <h3>Days Until AGI</h3>
+                                <div id="agi-countdown" class="countdown-timer"></div>
+                            </div>
+                            <div class="countdown-box">
+                                <h3>Days Until ASI</h3>
+                                <div id="asi-countdown" class="countdown-timer"></div>
+                            </div>
+                        </div>
+                        <p class="countdown-disclaimer">per industry estimates</p>
+                    </div>
+
+                    <style>
+                        .countdown-section {
+                            margin: 4rem 0;
+                            text-align: center;
+                        }
+
+                        .countdown-container {
+                            display: flex;
+                            justify-content: space-around;
+                            gap: 2rem;
+                            margin-bottom: 1rem;
+                        }
+
+                        .countdown-box {
+                            background: rgba(0, 0, 0, 0.3);
+                            border: 1px solid var(--neon-blue);
+                            border-radius: 8px;
+                            padding: 2rem;
+                            flex: 1;
+                            box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+                            transition: all 0.3s ease;
+                        }
+
+                        .countdown-box:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 5px 30px rgba(0, 243, 255, 0.2);
+                        }
+
+                        .countdown-box h3 {
+                            color: var(--neon-pink);
+                            margin-top: 0;
+                            margin-bottom: 1rem;
+                        }
+
+                        .countdown-timer {
+                            font-family: monospace;
+                            font-size: 1.5rem;
+                            color: var(--neon-blue);
+                            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+                        }
+
+                        .countdown-disclaimer {
+                            color: var(--text-color);
+                            opacity: 0.7;
+                            font-style: italic;
+                            font-size: 0.9rem;
+                        }
+                    </style>
+
+                    <script>
+                        function updateCountdown() {
+                            const now = new Date().getTime();
+                            const agiDate = new Date('January 1, 2026').getTime();
+                            const asiDate = new Date('January 1, 2028').getTime();
+
+                            function formatTime(distance) {
+                                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                            }
+
+                            document.getElementById('agi-countdown').textContent = formatTime(agiDate - now);
+                            document.getElementById('asi-countdown').textContent = formatTime(asiDate - now);
+                        }
+
+                        // Update every second
+                        updateCountdown();
+                        setInterval(updateCountdown, 1000);
+                    </script>
+
+                    <!-- Add new footnote -->
+                    <div class="footnote">
+                        <p id="fn1"><sup>1</sup> Artificial general intelligence, generally defined as "AI that can do most things as well as most humans." <a href="#_ftnref1" class="footnote-back">↩</a></p>
+                        
+                        <p id="fn2"><sup>2</sup> Artificial superintelligence, generally defined as "AI that can do everything better than every human." <a href="#_ftnref2" class="footnote-back">↩</a></p>
+                        
+                        <p id="fn3"><sup>3</sup> "Powerful AI" is a catch-all term that encompasses AGI and ASI, and everything in between. (You would not believe how much people in San Francisco enjoy arguing about these definitions.) <a href="#_ftnref3" class="footnote-back">↩</a></p>
+                        
+                        <p id="fn6"><sup>6</sup> I am, admittedly, a bit AI-obsessed – I pay for nine subscription AI tools, use them constantly, and talk about them so frequently that my wife has banned AI conversations at the dinner table. <a href="#_ftnref6" class="footnote-back">↩</a></p>
+                        
+                        <p id="fn7"><sup>7</sup> Sam Altman <a href="https://x.com/sama/status/1621621725791404032">has said</a> that he believes Eliezer will ultimately deserve the Nobel Peace Prize. <a href="#_ftnref7" class="footnote-back">↩</a></p>
+                        
+                        <p id="fn8"><sup>8</sup> "X-risk" is Rationalist-speak for "existential risk." They are also worried about "s-risk" (suffering risk, the possibility that AI won't kill us all, but will torture us so badly that we'll wish we were dead), "GCR" (global catastrophic risk, the risk that AI will cause a world war, engineer a deadly pandemic, or otherwise mess up society really badly without technically killing us all), and about 10 other kinds of risk. We'll need a glossary. <a href="#_ftnref8" class="footnote-back">↩</a></p>
+                        
+                        <p id="fn9"><sup>9</sup> Steven is a former OpenAI employee, on their AGI Readiness team, who left the company in November. <a href="#_ftnref9" class="footnote-back">↩</a></p>
+                        
+                        <p id="fn10"><sup>10</sup> Nick is also a former OpenAI employee, on their Alignment team, who left in 2023. <a href="#_ftnref10" class="footnote-back">↩</a></p>
+                        
+                        <p id="fn11"><sup>11</sup> p(doom) is AI-speak for "the probability of doom," which is <a href="https://www.nytimes.com/2023/12/06/business/dealbook/silicon-valley-artificial-intelligence.html">industry shorthand</a> for how likely you believe it is that AI will kill us all. Many AI insiders have a p(doom) of between 30-40%, and I know people with a p(doom) as high as 99.9%. <a href="#_ftnref11" class="footnote-back">↩</a></p>
+                    </div>
+
+                    <style>
+                        /* Add styling for footnote back links */
+                        .footnote-back {
+                            display: inline-block;
+                            margin-left: 0.5rem;
+                            font-size: 0.8em;
+                            text-decoration: none;
+                            opacity: 0.7;
+                            transition: all 0.3s ease;
+                        }
+
+                        .footnote-back:hover {
+                            opacity: 1;
+                            transform: translateX(-2px);
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Apply animations to elements
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('.character-card').forEach(card => {
+            card.classList.add('slide-in-left');
+            observer.observe(card);
+        });
+
+        document.querySelectorAll('.qa-item').forEach(item => {
+            item.classList.add('scale-in');
+            observer.observe(item);
+        });
+
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.width = `${Math.random() * 3}px`;
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = `${Math.random() * 20}s`;
+            particle.style.animationDuration = `${15 + Math.random() * 30}s`;
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+
+    <style>
+        .credits {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-top: 0.5rem;
+            display: block;
+        }
+        
+        .credits a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .credits a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+        }
+    </style>
+</body>
+</html>
